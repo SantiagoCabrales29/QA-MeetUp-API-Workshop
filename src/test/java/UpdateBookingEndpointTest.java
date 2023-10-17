@@ -61,25 +61,25 @@ public class UpdateBookingEndpointTest {
     // }
 
 
-    // @Test
-    // public void userCannotUpdateAnInvalidBooking() {
-    //     String username = "admin";
-    //     String password = "password123";
-    //     Auth auth = new Auth(username,password);
-    //     String token = api.auth(auth);
+    @Test
+    public void userCannotUpdateAnInvalidBooking() {
+        String username = "admin";
+        String password = "password123";
+        Auth auth = new Auth(username,password);
+        String token = api.auth(auth);
 
-    //     List<Integer> bookingList = api.getBookingIds();
-    //     int random = (int) (Math.random() * (bookingList.size()) + 1);
-    //     System.out.println("This is the random number: " + random);
+        List<Integer> bookingList = api.getBookingIds();
+        int random = (int) (Math.random() * (bookingList.size()) + 1);
+        System.out.println("This is the random number: " + random);
 
-    //     Booking booking = api.getBookingById(random);
+        Booking booking = api.getBookingById(random);
 
-    //     booking.setFirstname(DataGenerator.createRandomString());
-    //     booking.setLastname(DataGenerator.createRandomString());
+        booking.setFirstname(DataGenerator.createRandomString());
+        booking.setLastname(DataGenerator.createRandomString());
 
-    //     Response response = api.updateBooking(booking, token, 0);
-    //     response.then().log().all();
-    //     Assert.assertEquals(405, response.getStatusCode());
-    // }
+        Response response = api.updateBooking(booking, token, 0);
+        response.then().log().all();
+        Assert.assertEquals(405, response.getStatusCode());
+    }
 
 }
