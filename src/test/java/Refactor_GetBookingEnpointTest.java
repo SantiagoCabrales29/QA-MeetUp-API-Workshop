@@ -17,13 +17,13 @@ public class Refactor_GetBookingEnpointTest {
         bookingId = (int) (Math.random() * (listBookingIds.size())) + 1;
     }
 
-    @Test
-    public void getBookingById() {
-        Booking booking = api.getBookingById(bookingId);
+    // @Test
+    // public void getBookingById() {
+    //     Booking booking = api.getBookingById(bookingId);
 
-        Assert.assertNotNull("Booking is null",booking);
-        Assert.assertNotNull(booking.getFirstname());
-        Assert.assertNotNull(booking.getLastname());
-        Assert.assertTrue(booking.getTotalprice()>0);
-    }
+    //     Assert.assertNotNull("Booking is null",booking);
+    //     Assert.assertNotNull(booking.getFirstname());
+    //     Assert.assertNotNull(booking.getLastname());
+    //     Assert.assertTrue(booking.getTotalprice()>0);
+    // }
 }

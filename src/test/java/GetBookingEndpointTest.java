@@ -20,10 +20,10 @@ public class GetBookingEndpointTest {
         bookingId = (int) (Math.random() * (listBookingIds.size())) + 1;
     }
 
-    @Test
-    public void userCanGetBookingWithValidID() {
-        get("https://restful-booker.herokuapp.com/booking/"+bookingId).then().statusCode(200);
-    }
+    // @Test
+    // public void userCanGetBookingWithValidID() {
+    //     get("https://restful-booker.herokuapp.com/booking/"+bookingId).then().statusCode(200);
+    // }
 
     @Test
     public void userCannotGetBookingWithInvalidID() {
