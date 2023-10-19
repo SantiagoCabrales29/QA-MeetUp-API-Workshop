@@ -17,48 +17,49 @@ public class UpdateBookingEndpointTest {
         api = new RestfulBookerAPI("https://restful-booker.herokuapp.com");
     }
 
-    // @Test
-    // public void userCanUpdateABooking() {
-    //     String username = "admin";
-    //     String password = "password123";
-    //     Auth auth = new Auth(username,password);
-    //     String token = api.auth(auth);
+     @Test
+     public void userCanUpdateABooking() {
+         String username = "admin";
+         String password = "password123";
+         Auth auth = new Auth(username,password);
+         String token = api.auth(auth);
 
-    //     List<Integer> bookingList = api.getBookingIds();
-    //     int random = (int) (Math.random() * (bookingList.size()) + 1);
-    //     System.out.println("This is the random number: " + random);
+         List<Integer> bookingList = api.getBookingIds();
+         int random = (int) (Math.random() * (bookingList.size()));
+         System.out.println("El tamaño de la lista es: " + bookingList.size());
+         System.out.println("This is the random number: " + random);
 
-    //     Booking booking = api.getBookingById(random);
-    //     booking.setFirstname(DataGenerator.createRandomString());
-    //     booking.setLastname(DataGenerator.createRandomString());
+         Booking booking = api.getBookingById(bookingList.get(random));
+         booking.setFirstname(DataGenerator.createRandomString());
+         booking.setLastname(DataGenerator.createRandomString());
 
-    //     Response response = api.updateBooking(booking, token, bookingList.get(random));
-    //     response.then().log().all();
-    //     Assert.assertEquals(200, response.getStatusCode());
-    //     Assert.assertEquals("Names do not match", response.then().extract().path("firstname"), booking.getFirstname());
-    //     Assert.assertEquals("LastNames do not match", response.then().extract().path("lastname"), booking.getLastname());
-    // }
+         Response response = api.updateBooking(booking, token, bookingList.get(random));
+         response.then().log().all();
+         Assert.assertEquals(200, response.getStatusCode());
+         Assert.assertEquals("Names do not match", response.then().extract().path("firstname"), booking.getFirstname());
+         Assert.assertEquals("LastNames do not match", response.then().extract().path("lastname"), booking.getLastname());
+     }
 
 
-    // @Test
-    // public void userCannotUpdateABookingUsingInvalidToken() {
-    //     String username = "admin";
-    //     String password = "password123";
-    //     Auth auth = new Auth(username,password);
-    //     String token = DataGenerator.createRandomString();
+     @Test
+     public void userCannotUpdateABookingUsingInvalidToken() {
+         String username = "admin";
+         String password = "password123";
+         Auth auth = new Auth(username,password);
+         String token = DataGenerator.createRandomString();
 
-    //     List<Integer> bookingList = api.getBookingIds();
-    //     int random = (int) (Math.random() * (bookingList.size()) + 1);
-    //     System.out.println("This is the random number: " + random);
+         List<Integer> bookingList = api.getBookingIds();
+         int random = (int) (Math.random() * (bookingList.size()) + 1);
+         System.out.println("This is the random number: " + random);
 
-    //     Booking booking = api.getBookingById(random);
-    //     booking.setFirstname(DataGenerator.createRandomString());
-    //     booking.setLastname(DataGenerator.createRandomString());
+         Booking booking = api.getBookingById(bookingList.get(random));
+         booking.setFirstname(DataGenerator.createRandomString());
+         booking.setLastname(DataGenerator.createRandomString());
 
-    //     Response response = api.updateBooking(booking, token, bookingList.get(random));
-    //     response.then().log().all();
-    //     Assert.assertEquals(403, response.getStatusCode());
-    // }
+         Response response = api.updateBooking(booking, token, bookingList.get(random));
+         response.then().log().all();
+         Assert.assertEquals(403, response.getStatusCode());
+     }
 
 
     @Test

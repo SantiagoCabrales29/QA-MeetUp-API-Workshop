@@ -17,26 +17,25 @@ public class DeleteBookingEndpointTest {
         api = new RestfulBookerAPI("https://restful-booker.herokuapp.com");
     }
 
-    // @Test
-    // public void userCanDeleteABooking() {
-    //     String username = "admin";
-    //     String password = "password123";
-    //     Auth auth = new Auth(username,password);
-    //     String token = api.auth(auth);
+     @Test
+     public void userCanDeleteABooking() {
+         String username = "admin";
+         String password = "password123";
+         Auth auth = new Auth(username,password);
+         String token = api.auth(auth);
 
-    //     List<Integer> bookingList = api.getBookingIds();
+         List<Integer> bookingList = api.getBookingIds();
 
-    //     int random = (int) (Math.random() * (bookingList.size())+1);
+         int random = (int) (Math.random() * (bookingList.size()));
 
-    //     Response response = api.deleteBooking(token, bookingList.get(random));
+         Response response = api.deleteBooking(token, bookingList.get(random));
 
-    //     Assert.assertEquals("The status code is not the expected one",response.statusCode(), 201);
+         Assert.assertEquals("The status code is not the expected one",response.statusCode(), 201);
 
-    //     List<Integer> updatedList = api.getBookingIds();
+         List<Integer> updatedList = api.getBookingIds();
 
-    //     Assert.assertFalse("The booking wasn't deleted as expected", updatedList.contains(bookingList.get(random)));
-    //     Assert.assertTrue(updatedList.size() < bookingList.size());
-    // }
+         Assert.assertFalse("The booking wasn't deleted as expected", updatedList.contains(bookingList.get(random)));
+     }
 
 
     @Test

@@ -1,6 +1,4 @@
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
+import com.google.gson.*;
 import entities.Auth;
 import entities.Booking;
 import http.HttpMessageSender;
@@ -11,7 +9,6 @@ import java.util.List;
 public class RestfulBookerAPI {
     private final String url;
     private final HttpMessageSender messageSender;
-    private JsonParser parser = new JsonParser();
 
 
     public RestfulBookerAPI(String url) {
@@ -34,9 +31,13 @@ public class RestfulBookerAPI {
 
     public Booking getBookingById(int id) {
         Response response = messageSender.getRequestToEndpoint("/booking/"+id);
-        JsonElement jsonResponse = parser.parse(response.body().asString());
+        response.then().log().body();
+        String body = response.body().asString();
+        System.out.println(body);
 
-        Booking booking = new Gson().fromJson(jsonResponse, Booking.class);
+        Gson gson = new GsonBuilder().setLenient().create();
+
+        Booking booking = gson.fromJson(body, Booking.class);
         System.out.println("This is the name of the booking: " + booking.getFirstname() + " " + booking.getLastname());
 
         return booking;
