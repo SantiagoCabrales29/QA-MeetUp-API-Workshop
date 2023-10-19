@@ -17,7 +17,7 @@ public class GetBookingEndpointTest {
     public static void createTestEnvironment() {
         api = new RestfulBookerAPI("https://restful-booker.herokuapp.com");
         List<Integer> listBookingIds = api.getBookingIds();
-        bookingId = (int) (Math.random() * (listBookingIds.size())) + 1;
+        bookingId = listBookingIds.get((int) (Math.random() * (listBookingIds.size())));
     }
 
      @Test

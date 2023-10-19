@@ -73,7 +73,7 @@ public class UpdateBookingEndpointTest {
         int random = (int) (Math.random() * (bookingList.size()) + 1);
         System.out.println("This is the random number: " + random);
 
-        Booking booking = api.getBookingById(random);
+        Booking booking = api.getBookingById(bookingList.get(random));
 
         booking.setFirstname(DataGenerator.createRandomString());
         booking.setLastname(DataGenerator.createRandomString());
