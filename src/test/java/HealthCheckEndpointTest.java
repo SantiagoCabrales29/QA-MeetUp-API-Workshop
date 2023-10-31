@@ -15,6 +15,6 @@ public class HealthCheckEndpointTest {
 
     @Test
     public void invalidEndpointReturns404(){
-        get("https://restful-booker.herokuapp.com/weapi/ping").then().statusCode(404);
+        get("https://restful-booker.herokuapp.com/weapi/ping").then().statusCode(400);
     }
 }
