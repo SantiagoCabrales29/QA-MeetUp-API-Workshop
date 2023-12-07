@@ -27,7 +27,7 @@ public class GetBookingEndpointTest {
 
     @Test
     public void userCannotGetBookingWithInvalidID() {
-        get("https://restful-booker.herokuapp.com/booking/"+0).then().statusCode(403);
+        get("https://restful-booker.herokuapp.com/booking/"+0).then().statusCode(404);
     }
 
     @Test
